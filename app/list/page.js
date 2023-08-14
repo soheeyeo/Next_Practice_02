@@ -1,4 +1,7 @@
 import { connectDB } from "@/util/database"
+
+export const dynamic = 'force-dynamic'
+
 import ListItem from "./ListItem"
 
 export default async function List() {
