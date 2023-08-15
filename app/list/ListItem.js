@@ -15,20 +15,20 @@ export default function ListItem({result}) {
                             </Link>
                             <Link href={'/edit/' + result[i]._id}>✏️</Link>
                             <span onClick={(e)=>{
-                                // fetch('/api/post/delete', {
-                                //     method : 'DELETE', 
-                                //     body : result[i]._id
-                                // })
-                                // .then((r)=>{
-                                //     return r.json()
-                                // })
-                                // .then(()=>{
-                                //     e.target.parentElement.style.opacity = 0;
-                                //     setTimeout(() => {
-                                //         e.target.parentElement.style.display = 'none';
-                                //     }, 1000)
-                                // })
-                                fetch('/api/abc/yeo')
+                                fetch('/api/post/delete', {
+                                    method : 'DELETE', 
+                                    body : result[i]._id
+                                })
+                                .then((r)=>{
+                                    return r.json()
+                                })
+                                .then(()=>{
+                                    e.target.parentElement.style.opacity = 0;
+                                    setTimeout(() => {
+                                        e.target.parentElement.style.display = 'none';
+                                    }, 1000)
+                                })
+                                // fetch('/api/abc/yeo')
                             }}>🗑️</span>
                             <p>1월 1일</p>
                         </div>
