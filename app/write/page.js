@@ -1,12 +1,16 @@
-export default function Write() {
+import { getServerSession } from "next-auth"
+import WritePost from "./WritePost"
+import { authOptions } from "@/pages/api/auth/[...nextauth]"
+
+export default async function Write() {
+    let session = await getServerSession(authOptions)
     return (
         <div className="p-20">
-            <h4>글작성</h4>
-            <form action="/api/post/new" method="POST">
-                <input name="title" placeholder="글제목"/>
-                <input name="content" placeholder="글내용"/>
-                <button type="submit">전송</button>
-            </form>
+        {
+            session ?
+            <WritePost/>
+            : <h4>로그인을 해주세요.</h4>
+        }
         </div>
     )
 }
