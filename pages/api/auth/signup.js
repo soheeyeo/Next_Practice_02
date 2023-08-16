@@ -14,8 +14,14 @@ export default async function handler(요청, 응답) {
             응답.status(500).json('모두 작성해주세요.')
         } else  {
             let db = (await connectDB).db('forum');
-            await db.collection('user_cred').insertOne(요청.body)
-            응답.status(200).json('가입성공')
+            let find = await db.collection('user_cred').findOne({ email: 요청.body.email })
+
+            if(find.email === 요청.body.email) {
+                응답.status(500).json('이미 가입된 이메일입니다.')
+            } else {
+                await db.collection('user_cred').insertOne(요청.body)
+                응답.status(200).json('가입성공')
+            }
         }
     }
 }
