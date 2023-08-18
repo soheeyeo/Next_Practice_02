@@ -7,12 +7,11 @@ export default async function handler(요청, 응답) {
     let session = await getServerSession(요청, 응답, authOptions)
     if(요청.method == 'POST') {
         요청.body = JSON.parse(요청.body)
-        console.log(요청.body.comment)
 
         let commentContent = {
             content : 요청.body.comment,
             author : session.user.email,
-            parent : new ObjectId(요청.body._id)
+            parent : new ObjectId(요청.body._id),
         }
 
         const db = (await connectDB).db('forum')
