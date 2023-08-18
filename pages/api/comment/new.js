@@ -12,6 +12,7 @@ export default async function handler(요청, 응답) {
             content : 요청.body.comment,
             author : session.user.email,
             parent : new ObjectId(요청.body._id),
+            name : session.user.name
         }
 
         const db = (await connectDB).db('forum')
