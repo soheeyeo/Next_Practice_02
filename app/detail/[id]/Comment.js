@@ -11,7 +11,7 @@ export default function Comment(props) {
         .then((result)=> {
             setData(result)
         })
-    }, [])
+    }, [data])
 
     return(
         <div>
