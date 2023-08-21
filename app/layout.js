@@ -5,6 +5,7 @@ import LoginBtn from './LoginBtn'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import LogoutBtn from './LogoutBtn'
+import { cookies } from 'next/headers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,7 +16,10 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   let session = await getServerSession(authOptions)
-  console.log(session)
+
+  let res = cookies().get('쿠키이름')
+  console.log(res)
+
   return (
     <html lang="en">
       <body>
