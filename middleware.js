@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server'
 
 export async function middleware(request) {
-    console.log(request.nestUrl)
-    console.log(request.cookies)
-    console.log(request.headers)
-    NextResponse.next()
-    NextResponse.redirect()
-    NextResponse.rewrite()
+    
+    if(request.nextUrl.pathname.startWith('/list')) {
+        console.log(new Date())
+        console.log(request.headers.get('sec-ch-ua-platform'))
+        return NextResponse.next()
+    }
+
 }
